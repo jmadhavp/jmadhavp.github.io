@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://jmadhavp.github.io/trustcalc/sitemap-main.xml
