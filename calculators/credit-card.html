@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Card Interest Calculator – Payoff Time & Interest Cost | TrustCalc</title>
+    <meta name="description" content="Calculate how long it will take to pay off your credit card balance and how much interest you will pay. Compare minimum payments vs fixed payments for USA and UK.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jmadhavp.github.io/trustcalc/calculators/credit-card.html">
+    <meta property="og:title" content="Credit Card Interest Calculator – TrustCalc">
+    <meta property="og:description" content="Calculate your credit card payoff time and total interest costs.">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="https://jmadhavp.github.io/trustcalc/calculators/credit-card.html">
+    <meta name="twitter:title" content="Credit Card Interest Calculator – TrustCalc">
+    <meta name="twitter:description" content="Find the fastest way to clear your credit card balance.">
+    
+    <link rel="canonical" href="https://jmadhavp.github.io/trustcalc/calculators/credit-card.html">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/calculator.css">
+
+    <!-- JSON-LD FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How is credit card interest calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most credit cards use the 'Average Daily Balance' method. Your APR is divided by 365 to get a daily interest rate. This rate is then applied to your balance every day, and the total interest is added to your account at the end of each billing cycle."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a credit card minimum payment?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The minimum payment is the lowest amount you can pay to avoid late fees and keep your account in good standing. It is usually calculated as 1-3% of your total balance plus any interest and fees. Paying only the minimum is the slowest and most expensive way to pay off debt."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the 'Avalanche Method' for paying off credit card debt?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Avalanche Method involves paying off the credit card with the highest interest rate first while making minimum payments on others. This strategy saves you the most money in interest over time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does a credit card balance transfer work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A balance transfer allows you to move high-interest debt to a new card with a 0% introductory APR. This can help you pay off the principal balance faster, but be aware of balance transfer fees (usually 3-5% of the amount moved)."
+          }
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="container nav-wrapper">
+            <a href="../index.html" class="logo">Trust<span>Calc</span></a>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#calculators">Calculators</a></li>
+                </ul>
+            </nav>
+            <a href="../index.html#calculators" class="btn btn-primary">All Tools</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <section style="margin-top: 3rem;">
+            <h1>Credit Card Interest Calculator (USA & UK)</h1>
+            <p style="color: var(--text-light);">See how credit card interest compounds and find the fastest way to clear your balance.</p>
+        </section>
+
+        <div class="calc-container">
+            <!-- Inputs -->
+            <div class="calc-inputs">
+                <div class="input-group">
+                    <label for="cardBalance">Credit Card Balance</label>
+                    <input type="number" id="cardBalance" value="5000" step="100">
+                </div>
+
+                <div class="input-group">
+                    <label for="cardApr">Interest Rate (APR %)</label>
+                    <input type="number" id="cardApr" value="19.99" step="0.1">
+                </div>
+
+                <div class="input-group">
+                    <label for="paymentType">Payment Strategy</label>
+                    <select id="paymentType">
+                        <option value="minimum">Minimum Payment Only</option>
+                        <option value="fixed">Fixed Monthly Amount</option>
+                    </select>
+                </div>
+
+                <div id="minPayGroup" class="input-group">
+                    <label for="minPayPercent">Minimum Payment %</label>
+                    <input type="number" id="minPayPercent" value="2" step="0.5">
+                </div>
+
+                <div id="fixedPayGroup" class="input-group" style="display: none;">
+                    <label for="fixedPayment">Fixed Monthly Payment</label>
+                    <input type="number" id="fixedPayment" value="200" step="10">
+                </div>
+
+                <div class="input-group">
+                    <label for="currency">Currency</label>
+                    <select id="currency">
+                        <option value="US">USD ($)</option>
+                        <option value="UK">GBP (£)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Results -->
+            <div class="calc-results">
+                <div class="result-item">
+                    <div class="result-label">Time to Pay Off</div>
+                    <div id="payoffTime" class="result-value highlight">0 Months</div>
+                </div>
+
+                <div class="result-item">
+                    <div class="result-label">Total Interest Paid</div>
+                    <div id="totalInterest" class="result-value">$0.00</div>
+                </div>
+
+                <div class="result-item">
+                    <div class="result-label">Total Amount Paid</div>
+                    <div id="totalPaid" class="result-value">$0.00</div>
+                </div>
+
+                <div style="margin-top: auto; padding-top: 1.5rem; border-top: 1px solid var(--border-color); font-size: 0.8rem; color: var(--text-light); line-height: 1.4;">
+                    <strong>Notice:</strong> This calculation is for estimation purposes only. Credit card interest is calculated daily by most lenders. This tool uses monthly compounding as an estimate. This is not financial advice.
+                </div>
+            </div>
+        </div>
+
+        <section class="seo-section">
+            <h2>The Cost of Credit Card Debt</h2>
+            <p>Credit cards are one of the most expensive ways to borrow money due to high interest rates and monthly compounding. If you only make the <strong>minimum payment</strong>, most of your money goes toward interest rather than reducing your principal balance. This can lead to debt that lasts for decades.</p>
+            
+            <div style="margin: 2rem 0; padding: 2rem; background: var(--bg-color); border-radius: 8px;">
+                <h3>Usage Example: Paying Off a $5,000 Balance</h3>
+                <p>If you have a <strong>$5,000 balance</strong> on a card with a <strong>19.99% APR</strong> and only pay the <strong>2% minimum payment</strong>, it will take you over <strong>22 years</strong> to pay off the debt, and you will pay over <strong>$7,000 in interest alone</strong>. By switching to a fixed payment of <strong>$200 per month</strong>, you could be debt-free in less than <strong>3 years</strong> and pay only about $1,500 in interest.</p>
+            </div>
+            
+            <div class="faq-container">
+                <h3>Frequently Asked Questions</h3>
+                <div class="faq-item">
+                    <div class="faq-question">How is credit card interest calculated? <span>+</span></div>
+                    <div class="faq-answer">Most credit cards use the "Average Daily Balance" method. Your APR is divided by 365 to get a daily interest rate. This rate is then applied to your balance every day, and the total interest is added to your account at the end of each billing cycle.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What is a minimum payment? <span>+</span></div>
+                    <div class="faq-answer">The minimum payment is the lowest amount you can pay to avoid late fees and keep your account in good standing. It is usually calculated as 1-3% of your total balance plus any interest and fees. Paying only the minimum is the slowest and most expensive way to pay off debt.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What is the "Avalanche Method" for paying off debt? <span>+</span></div>
+                    <div class="faq-answer">The Avalanche Method involves paying off the credit card with the highest interest rate first while making minimum payments on others. This strategy saves you the most money in interest over time.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How does a balance transfer work? <span>+</span></div>
+                    <div class="faq-answer">A balance transfer allows you to move high-interest debt to a new card with a 0% introductory APR. This can help you pay off the principal balance faster, but be aware of balance transfer fees (usually 3-5% of the amount moved).</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Related Tools & Guides -->
+        <section class="related-tools">
+            <h3>Related Tools & Guides</h3>
+            <div class="related-grid">
+                <a href="loan.html" class="related-card">
+                    <h4>Loan Repayment</h4>
+                    <p>Compare credit card consolidation options with a structured personal loan.</p>
+                    <span class="learn-more">Try Tool →</span>
+                </a>
+                <a href="dti.html" class="related-card">
+                    <h4>DTI Calculator</h4>
+                    <p>Learn how high-interest credit card debt impacts your borrowing capacity.</p>
+                    <span class="learn-more">Try Tool →</span>
+                </a>
+                <a href="../guides/credit-card-payoff-strategy.html" class="related-card">
+                    <h4>Card Payoff Strategy</h4>
+                    <p>Discover the most effective methods to clear your balances for good.</p>
+                    <span class="learn-more">Read Guide →</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 TrustCalc Financial. <a href="../legal/privacy-policy.html" style="color: #adbdcc;">Privacy Policy</a> | <a href="../legal/disclaimer.html" style="color: #adbdcc;">Disclaimer</a></p>
+                <p>For estimation purposes only. Not financial advice.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/common.js"></script>
+    <script src="../assets/js/credit-card.js"></script>
+</body>
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rent vs Buy Calculator – Is Buying a Home Worth It? | TrustCalc</title>
+    <meta name="description" content="Compare the total cost of renting vs buying a home over 10-30 years. Factor in appreciation, maintenance, and interest costs for USA and UK markets.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jmadhavp.github.io/trustcalc/calculators/rent-vs-buy.html">
+    <meta property="og:title" content="Rent vs Buy Calculator – TrustCalc">
+    <meta property="og:description" content="Compare the long-term financial impact of renting vs buying a property.">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="https://jmadhavp.github.io/trustcalc/calculators/rent-vs-buy.html">
+    <meta name="twitter:title" content="Rent vs Buy Calculator – TrustCalc">
+    <meta name="twitter:description" content="Find out if buying a home is financially better than renting.">
+    
+    <link rel="canonical" href="https://jmadhavp.github.io/trustcalc/calculators/rent-vs-buy.html">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/calculator.css">
+
+    <!-- JSON-LD FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the '5% Rule' for renting vs buying?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The 5% Rule suggests that the 'unrecoverable costs' of homeownership (property tax, maintenance, and the cost of capital) are roughly 5% of the home's value per year. If you can rent a similar home for less than 5% of its purchase price per year, renting may be mathematically superior."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is renting 'throwing money away'?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Renting provides you with a place to live and flexibility with no maintenance or tax obligations. While you don't build equity, you also don't risk a market downturn or pay for a broken roof."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long should I stay in a home to justify buying?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Generally, the 'break-even' point for buying is between 5 and 7 years. This is because it takes time for your home's appreciation and principal paydown to offset the high costs of buying (closing costs/stamp duty) and eventually selling (agent commissions)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does buying a home always protect against inflation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Mostly yes. A fixed-rate mortgage ensures your housing cost stays the same while your income and home value likely rise with inflation. However, property taxes and insurance costs will still increase."
+          }
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="container nav-wrapper">
+            <a href="../index.html" class="logo">Trust<span>Calc</span></a>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#calculators">Calculators</a></li>
+                </ul>
+            </nav>
+            <a href="../index.html#calculators" class="btn btn-primary">All Tools</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <section style="margin-top: 3rem;">
+            <h1>Rent vs Buy Calculator (USA & UK)</h1>
+            <p style="color: var(--text-light);">Compare the long-term financial impact of renting vs buying a property.</p>
+        </section>
+
+        <div class="calc-container">
+            <!-- Inputs -->
+            <div class="calc-inputs">
+                <h3>Renting</h3>
+                <div class="input-group">
+                    <label for="monthlyRent">Monthly Rent</label>
+                    <input type="number" id="monthlyRent" value="2200" step="100">
+                </div>
+                <div class="input-group">
+                    <label for="rentIncrease">Annual Rent Increase (%)</label>
+                    <input type="number" id="rentIncrease" value="3" step="0.5">
+                </div>
+
+                <h3 style="margin-top: 2rem;">Buying</h3>
+                <div class="input-group">
+                    <label for="homePrice">Home Price</label>
+                    <input type="number" id="homePrice" value="450000" step="5000">
+                </div>
+                <div class="input-group">
+                    <label for="interestRate">Mortgage Rate (%)</label>
+                    <input type="number" id="interestRate" value="6.5" step="0.1">
+                </div>
+                <div class="input-group">
+                    <label for="appreciation">Annual Appreciation (%)</label>
+                    <input type="number" id="appreciation" value="4" step="0.5">
+                </div>
+                
+                <div class="input-group">
+                    <label for="years">Comparison Period (Years)</label>
+                    <input type="number" id="years" value="10" min="1" max="30">
+                </div>
+            </div>
+
+            <!-- Results -->
+            <div class="calc-results">
+                <div class="result-item">
+                    <div class="result-label">Verdict after <span id="verdictYears">10</span> Years</div>
+                    <div id="verdict" class="result-value highlight" style="font-size: 1.5rem;">Calculating...</div>
+                </div>
+
+                <div class="result-item">
+                    <div class="result-label">Total Cost to Rent</div>
+                    <div id="totalRent" class="result-value">$0.00</div>
+                </div>
+
+                <div class="result-item">
+                    <div class="result-label">Total Cost to Buy (Net)</div>
+                    <div id="totalBuy" class="result-value">$0.00</div>
+                </div>
+                
+                <div style="margin-top: auto; padding-top: 1.5rem; border-top: 1px solid var(--border-color); font-size: 0.8rem; color: var(--text-light); line-height: 1.4;">
+                    <strong>Notice:</strong> This calculation is for estimation purposes only. Real estate markets are highly volatile. Buying cost includes maintenance (1%) and subtracts estimated equity. This is not financial advice.
+                </div>
+            </div>
+        </div>
+
+        <section class="seo-section">
+            <h2>Should You Rent or Buy?</h2>
+            <p>The decision to buy a home is both emotional and financial. While buying allows you to build <strong>equity</strong> and benefit from property <strong>appreciation</strong>, it also comes with hidden costs like maintenance, property taxes, and selling fees. Renting offers flexibility and zero maintenance costs, but provides no long-term asset growth.</p>
+
+            <div style="margin: 2rem 0; padding: 2rem; background: var(--bg-color); border-radius: 8px;">
+                <h3>Usage Example: The 10-Year Comparison</h3>
+                <p>If you rent a home for <strong>$2,200/month</strong> with a 3% annual increase, you will spend <strong>$294,000</strong> over 10 years. If you buy a <strong>$450,000 home</strong> instead, even with mortgage interest and maintenance, the home's appreciation (at 4%) could result in a net cost that is significantly lower than renting, provided you stay in the home long enough to offset the closing costs.</p>
+            </div>
+
+            <div class="faq-container">
+                <h3>Frequently Asked Questions</h3>
+                <div class="faq-item">
+                    <div class="faq-question">What is the "5% Rule" for renting vs buying? <span>+</span></div>
+                    <div class="faq-answer">The 5% Rule suggests that the "unrecoverable costs" of homeownership (property tax, maintenance, and the cost of capital) are roughly 5% of the home's value per year. If you can rent a similar home for less than 5% of its purchase price per year, renting may be mathematically superior.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Is renting "throwing money away"? <span>+</span></div>
+                    <div class="faq-answer">No. Renting provides you with a place to live and flexibility with no maintenance or tax obligations. While you don't build equity, you also don't risk a market downturn or pay for a broken roof.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How long should I stay in a home to justify buying? <span>+</span></div>
+                    <div class="faq-answer">Generally, the "break-even" point for buying is between 5 and 7 years. This is because it takes time for your home's appreciation and principal paydown to offset the high costs of buying (closing costs/stamp duty) and eventually selling (agent commissions).</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Does buying always protect against inflation? <span>+</span></div>
+                    <div class="faq-answer">Mostly yes. A fixed-rate mortgage ensures your housing cost stays the same while your income and home value likely rise with inflation. However, property taxes and insurance costs will still increase.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Related Tools & Guides -->
+        <section class="related-tools">
+            <h3>Related Tools & Guides</h3>
+            <div class="related-grid">
+                <a href="mortgage.html" class="related-card">
+                    <h4>Mortgage Calculator</h4>
+                    <p>Get a detailed breakdown of your monthly payments including taxes and insurance.</p>
+                    <span class="learn-more">Try Tool →</span>
+                </a>
+                <a href="dti.html" class="related-card">
+                    <h4>DTI Calculator</h4>
+                    <p>See how a new mortgage would impact your overall debt-to-income ratio.</p>
+                    <span class="learn-more">Try Tool →</span>
+                </a>
+                <a href="../guides/rent-vs-buy-decision-guide.html" class="related-card">
+                    <h4>Rent vs Buy Decision</h4>
+                    <p>A comprehensive guide to the financial and lifestyle factors of homeownership.</p>
+                    <span class="learn-more">Read Guide →</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 TrustCalc Financial. <a href="../legal/privacy-policy.html" style="color: #adbdcc;">Privacy Policy</a> | <a href="../legal/disclaimer.html" style="color: #adbdcc;">Disclaimer</a></p>
+                <p>For estimation purposes only. Not financial advice.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/common.js"></script>
+    <script>
+        function calculateRentVsBuy() {
+            const monthlyRent = parseFloat(document.getElementById('monthlyRent').value) || 0;
+            const rentIncrease = parseFloat(document.getElementById('rentIncrease').value) / 100 || 0;
+            const homePrice = parseFloat(document.getElementById('homePrice').value) || 0;
+            const interestRate = parseFloat(document.getElementById('interestRate').value) / 100 || 0;
+            const appreciation = parseFloat(document.getElementById('appreciation').value) / 100 || 0;
+            const years = parseInt(document.getElementById('years').value) || 10;
+
+            // 1. Total Rent Cost
+            let totalRent = 0;
+            let currentRent = monthlyRent;
+            for (let i = 0; i < years; i++) {
+                totalRent += currentRent * 12;
+                currentRent *= (1 + rentIncrease);
+            }
+
+            // 2. Total Buy Cost (Simplified)
+            // Monthly mortgage (assume 20% down)
+            const loanAmount = homePrice * 0.8;
+            const monthlyPI = financial.pmt(interestRate / 12, 30 * 12, loanAmount);
+            const totalPI = monthlyPI * 12 * years;
+            
+            // Maintenance (1% of home value annually)
+            const totalMaintenance = homePrice * 0.01 * years;
+            
+            // Home value after X years
+            const futureValue = homePrice * Math.pow(1 + appreciation, years);
+            
+            // Equity (Very simplified: just the appreciation + small principal estimate)
+            const equityGained = (futureValue - homePrice) + (loanAmount * 0.1 * (years / 10)); 
+            
+            const netBuyCost = totalPI + totalMaintenance - equityGained;
+
+            // Update UI
+            updateElementText('verdictYears', years);
+            updateElementText('totalRent', formatCurrency(totalRent));
+            updateElementText('totalBuy', formatCurrency(netBuyCost));
+
+            const verdictEl = document.getElementById('verdict');
+            if (netBuyCost < totalRent) {
+                verdictEl.innerText = 'Buying is Cheaper';
+                verdictEl.style.color = 'var(--success-color)';
+            } else {
+                verdictEl.innerText = 'Renting is Cheaper';
+                verdictEl.style.color = 'var(--primary-color)';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('input').forEach(el => el.addEventListener('input', calculateRentVsBuy));
+            calculateRentVsBuy();
+        });
+    </script>
+</body>
+</html>

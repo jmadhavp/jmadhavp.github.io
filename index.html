@@ -3,52 +3,262 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TrustCalc | Redirecting to Professional Financial Tools</title>
+    <title>TrustCalc | Professional Financial Calculators for USA & UK</title>
+    <meta name="google-site-verification" content="JTW89XN6nRnUaMWE89snaILAe2FaWNG8paPX3o-B8OQ" />
+    <meta name="description" content="Accurate, free financial calculators for USA and UK. Mortgage, loan repayment, credit card interest, inflation, and more. Plan your financial future today.">
+    <meta name="keywords" content="financial calculator online, mortgage calculator usa, mortgage calculator uk, loan repayment calculator, credit card interest calculator, inflation calculator usa">
     
-    <!-- Google AdSense Verification -->
-    <meta name="google-adsense-account" content="ca-pub-2225241493943397">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2225241493943397" crossorigin="anonymous"></script>
-
-    <!-- Redirection Logic -->
-    <meta http-equiv="refresh" content="0; url=https://jmadhavp.github.io/trustcalc/">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jmadhavp.github.io/trustcalc/">
+    <meta property="og:title" content="TrustCalc | Professional Financial Calculators for USA & UK">
+    <meta property="og:description" content="Accurate, free financial calculators for USA and UK. Mortgage, loan repayment, credit card interest, inflation, and more.">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="https://jmadhavp.github.io/trustcalc/">
+    <meta name="twitter:title" content="TrustCalc | Professional Financial Calculators">
+    <meta name="twitter:description" content="Accurate, free financial calculators for USA and UK. Plan your financial future today.">
+    
     <link rel="canonical" href="https://jmadhavp.github.io/trustcalc/">
-    <script type="text/javascript">
-        window.location.href = "https://jmadhavp.github.io/trustcalc/";
+    
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "TrustCalc",
+      "url": "https://jmadhavp.github.io/trustcalc/",
+      "description": "Professional-grade financial tools for USA and UK residents. Accurate calculations for mortgages, loans, and wealth planning."
+    }
     </script>
-
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/main.css">
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f8f9fa;
-            color: #333;
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 6rem 0;
             text-align: center;
         }
-        .container {
-            padding: 2rem;
-            background: white;
+        .hero h1 {
+            color: var(--white);
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            color: #adbdcc;
+        }
+        .calc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 4rem 0;
+        }
+        .calc-card {
+            background: var(--white);
+            padding: 2.5rem;
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        a {
-            color: #2563eb;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
             text-decoration: none;
-            font-weight: 600;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--border-color);
         }
-        a:hover {
-            text-decoration: underline;
+        .calc-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+        .calc-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+        .calc-card p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        .calc-card .arrow {
+            color: var(--accent-color);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .features {
+            background: var(--bg-color);
+            padding: 4rem 0;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+        .feature-item h4 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>TrustCalc</h1>
-        <p>Redirecting you to our financial tools suite...</p>
-        <p>If you are not redirected automatically, <a href="https://jmadhavp.github.io/trustcalc/">click here to continue</a>.</p>
-    </div>
+    <header>
+        <div class="container nav-wrapper">
+            <a href="index.html" class="logo">Trust<span>Calc</span></a>
+            <nav>
+                <ul>
+                    <li><a href="index.html" data-i18n="home">Home</a></li>
+                    <li><a href="#calculators" data-i18n="calculators">Calculators</a></li>
+                    <li><a href="legal/disclaimer.html" data-i18n="about">About</a></li>
+                </ul>
+            </nav>
+            <a href="#calculators" class="btn btn-primary" data-i18n="getStarted">Get Started</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Financial Planning, Simplified.</h1>
+                <p>Professional-grade financial tools designed for USA and UK residents. Accurate calculations for mortgages, loans, and wealth planning.</p>
+                <div class="lang-switcher" style="justify-content: center; margin-top: 1rem;">
+                    <span data-lang="en">🇺🇸 English (US)</span> | <span data-lang="en">🇬🇧 English (UK)</span> | <span data-lang="es">🇪🇸 Español</span> | <span data-lang="fr">🇫🇷 Français</span> | <span data-lang="de">🇩🇪 Deutsch</span> | <span data-lang="jp">🇯🇵 日本語</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="calculators" class="container">
+            <div class="calc-grid">
+                <!-- Mortgage -->
+                <a href="calculators/mortgage.html" class="calc-card">
+                    <h3 data-i18n="mortgageTitle">Mortgage Calculator</h3>
+                    <p>Calculate monthly payments, taxes, and insurance for USA & UK properties. View full amortization schedules.</p>
+                    <div class="arrow" data-i18n="tryNow">Try Now &rarr;</div>
+                </a>
+
+                <!-- Loan -->
+                <a href="calculators/loan.html" class="calc-card">
+                    <h3 data-i18n="loanTitle">Loan Repayment</h3>
+                    <p>Plan personal, auto, or business loans. Simulate early repayments and see total interest savings.</p>
+                    <div class="arrow" data-i18n="tryNow">Try Now &rarr;</div>
+                </a>
+
+                <!-- Credit Card -->
+                <a href="calculators/credit-card.html" class="calc-card">
+                    <h3 data-i18n="creditCardTitle">Credit Card Interest</h3>
+                    <p>Understand how credit card interest compounds. Plan your payoff strategy and avoid debt traps.</p>
+                    <div class="arrow" data-i18n="tryNow">Try Now &rarr;</div>
+                </a>
+
+                <!-- Inflation -->
+                <a href="calculators/inflation.html" class="calc-card">
+                    <h3 data-i18n="inflationTitle">Inflation Calculator</h3>
+                    <p>Track purchasing power changes based on official US CPI and UK inflation data.</p>
+                    <div class="arrow" data-i18n="tryNow">Try Now &rarr;</div>
+                </a>
+
+                <!-- Rent vs Buy -->
+                <a href="calculators/rent-vs-buy.html" class="calc-card">
+                    <h3 data-i18n="rentBuyTitle">Rent vs Buy</h3>
+                    <p>Compare the long-term costs of renting versus purchasing a home in today's market.</p>
+                    <div class="arrow" data-i18n="tryNow">Try Now &rarr;</div>
+                </a>
+
+                <!-- Salary to Hourly -->
+                <a href="calculators/salary-to-hourly.html" class="calc-card">
+                    <h3 data-i18n="salaryTitle">Salary to Hourly</h3>
+                    <p>Convert your annual salary to an hourly rate and understand your true earnings per hour.</p>
+                    <div class="arrow" data-i18n="tryNow">Try Now &rarr;</div>
+                </a>
+
+                <!-- Debt Guide -->
+                <a href="guides/guide-debt-management.html" class="calc-card" style="border-color: var(--success-color);">
+                    <h3 style="color: var(--success-color);" data-i18n="debtGuideTitle">Debt Management Guide</h3>
+                    <p>Expert strategies for paying off credit cards and loans using the Avalanche and Snowball methods.</p>
+                    <div class="arrow" style="color: var(--success-color);" data-i18n="readGuide">Read Guide &rarr;</div>
+                </a>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="container">
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <h4>Bank-Grade Accuracy</h4>
+                        <p>Calculations based on real-world financial standards and tax laws.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>100% Privacy</h4>
+                        <p>No data is ever stored. All calculations happen locally in your browser.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Free to Use</h4>
+                        <p>No subscriptions, no hidden fees. Just professional financial tools.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="seo-section">
+            <div class="container" style="max-width: 800px;">
+                <h2>Trusted Financial Tools for Smart Decisions</h2>
+                <p>Navigating personal finance in the USA and UK requires precision. Whether you are looking for a <strong>mortgage calculator usa</strong> to plan your first home purchase or a <strong>loan repayment calculator</strong> for an auto loan, TrustCalc provides the clarity you need.</p>
+                <p style="margin-top: 1rem;">Our tools are built with SEO and user trust in mind, ensuring you get accurate results for <strong>credit card interest</strong> and <strong>inflation rate</strong> projections. Use our <strong>salary to hourly calculator</strong> to better understand your income, or dive into <strong>rent vs buy</strong> simulations to make the right housing choice.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo" style="color: var(--white);">Trust<span>Calc</span></a>
+                    <p style="margin-top: 1rem; color: #adbdcc;">Professional financial tools for the modern world.</p>
+                </div>
+                <div class="footer-col">
+                    <h4 data-i18n="calculators">Calculators</h4>
+                    <ul>
+                        <li><a href="calculators/mortgage.html" data-i18n="mortgageTitle">Mortgage Calculator</a></li>
+                        <li><a href="calculators/loan.html" data-i18n="loanTitle">Loan Calculator</a></li>
+                        <li><a href="calculators/credit-card.html" data-i18n="creditCardTitle">Credit Card Payoff</a></li>
+                        <li><a href="calculators/inflation.html" data-i18n="inflationTitle">Inflation Tool</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 data-i18n="legal">Legal</h4>
+                    <ul>
+                        <li><a href="legal/privacy-policy.html" data-i18n="privacy">Privacy Policy</a></li>
+                        <li><a href="legal/disclaimer.html" data-i18n="disclaimer">Disclaimer</a></li>
+                        <li><a href="legal/disclaimer.html#contact" data-i18n="contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 data-i18n="region">Region</h4>
+                    <div class="lang-switcher">
+                        <span data-lang="en">US</span> | <span data-lang="en">UK</span> | <span data-lang="es">ES</span> | <span data-lang="fr">FR</span> | <span data-lang="de">DE</span> | <span data-lang="jp">JP</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 TrustCalc Financial. All rights reserved.</p>
+                <p>Designed for USA & UK Markets</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/common.js"></script>
 </body>
 </html>
