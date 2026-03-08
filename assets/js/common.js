@@ -26,8 +26,16 @@ const formatters = {
     })
 };
 
+const financial = {
+    pmt: (rate, nper, pv) => {
+        if (rate === 0) return pv / nper;
+        const pmt = (rate * pv) / (1 - Math.pow(1 + rate, -nper));
+        return pmt;
+    }
+};
+
 function formatCurrency(amount, region = 'US') {
-    return region === 'UK' ? formatters.GBP.format(amount) : formatters.USD.format(amount);
+    return (region === 'UK' || region === 'GBP') ? formatters.GBP.format(amount) : formatters.USD.format(amount);
 }
 
 function formatPercent(value) {
@@ -38,6 +46,49 @@ function updateElementText(id, text) {
     const el = document.getElementById(id);
     if (el) el.innerText = text;
 }
+
+// Global Region Management
+let currentRegion = localStorage.getItem('trustcalc_region') || 'US';
+
+function setRegion(region) {
+    currentRegion = region;
+    localStorage.setItem('trustcalc_region', region);
+    // Notify page specific handlers
+    if (window.onRegionChange) {
+        window.onRegionChange(region);
+    }
+    updateUIForRegion();
+}
+
+function updateUIForRegion() {
+    const symbols = document.querySelectorAll('.currency-symbol');
+    symbols.forEach(s => s.innerText = currentRegion === 'UK' ? '£' : '$');
+}
+
+function shareResults() {
+    const text = `Check out my financial calculation on TrustCalc: ${window.location.href}`;
+    if (navigator.share) {
+        navigator.share({
+            title: document.title,
+            text: text,
+            url: window.location.href
+        }).then(() => console.log('Successful share'))
+          .catch((error) => console.log('Error sharing', error));
+    } else {
+        navigator.clipboard.writeText(window.location.href);
+        alert('URL copied to clipboard!');
+    }
+}
+
+function emailResults() {
+    const subject = encodeURIComponent(`Financial Report from TrustCalc: ${document.title}`);
+    const body = encodeURIComponent(`I used TrustCalc to run some numbers. You can see the tool here: ${window.location.href}\n\nSent from TrustCalc - Professional Financial Tools.`);
+    window.location.href = `mailto:?subject=${subject}&body=${body}`;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    updateUIForRegion();
+});
 
 const translations = {
     en: {
