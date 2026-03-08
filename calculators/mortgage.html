@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mortgage Calculator USA & UK – Monthly Payment & Amortization | TrustCalc</title>
+    <meta name="description" content="Free mortgage calculator for USA and UK. Estimate monthly payments, interest, property tax and full amortization schedule with clear examples.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jmadhavp.github.io/trustcalc/calculators/mortgage.html">
+    <meta property="og:title" content="Mortgage Calculator USA & UK – TrustCalc">
+    <meta property="og:description" content="Estimate your monthly mortgage payments and full amortization schedule for USA and UK.">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="https://jmadhavp.github.io/trustcalc/calculators/mortgage.html">
+    <meta name="twitter:title" content="Mortgage Calculator USA & UK – TrustCalc">
+    <meta name="twitter:description" content="Free mortgage calculator for USA and UK. Estimate monthly payments and amortization.">
+    
+    <link rel="canonical" href="https://jmadhavp.github.io/trustcalc/calculators/mortgage.html">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/calculator.css">
+
+    <!-- JSON-LD FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a good down payment for a mortgage?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "While 20% is often recommended to avoid Private Mortgage Insurance (PMI) in the US, many buyers put down as little as 3-5% depending on the loan type. In the UK, a larger deposit (e.g., 10-15%) typically unlocks lower interest rate tiers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does interest rate affect my mortgage payment?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Even a 1% difference in interest rates can save or cost you tens of thousands of dollars over the life of a 30-year loan. For example, on a $300,000 loan, 1% extra in interest adds about $200 per month to your payment."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the 28/36 rule for mortgage affordability?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The 28/36 rule suggests that your monthly housing costs should not exceed 28% of your gross monthly income, and your total debt payments should not exceed 36%. This is a common benchmark used by US lenders."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I get a mortgage with bad credit?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, but it will likely come with a higher interest rate and a larger down payment requirement. In the US, FHA loans are designed for borrowers with lower credit scores. In the UK, specialist lenders offer 'adverse credit' mortgages."
+          }
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="container nav-wrapper">
+            <a href="../index.html" class="logo">Trust<span>Calc</span></a>
+            <nav>
+                <ul>
+                    <li><a href="../index.html" data-i18n="home">Home</a></li>
+                    <li><a href="../index.html#calculators" data-i18n="calculators">Calculators</a></li>
+                </ul>
+            </nav>
+            <a href="../index.html#calculators" class="btn btn-primary" data-i18n="allTools">All Tools</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <section style="margin-top: 3rem;">
+            <h1>Mortgage Calculator (USA & UK)</h1>
+            <p style="color: var(--text-light);">Estimate your monthly payments and see a full breakdown of your mortgage costs.</p>
+        </section>
+
+        <div class="calc-container">
+            <!-- Inputs -->
+            <div class="calc-inputs">
+                <div class="region-toggle">
+                    <div class="region-btn active" data-region="US">USA Standards</div>
+                    <div class="region-btn" data-region="UK">UK Standards</div>
+                </div>
+
+                <div class="input-group">
+                    <label for="homeValue">Home Value</label>
+                    <input type="number" id="homeValue" value="400000" step="1000">
+                </div>
+
+                <div class="input-group">
+                    <label for="downPayment">Down Payment</label>
+                    <input type="number" id="downPayment" value="80000" step="1000">
+                </div>
+
+                <div class="input-group">
+                    <label for="interestRate">Interest Rate (APR %)</label>
+                    <input type="number" id="interestRate" value="6.5" step="0.1">
+                </div>
+
+                <div class="input-group">
+                    <label for="loanTerm">Loan Term (Years)</label>
+                    <select id="loanTerm">
+                        <option value="30">30 Years</option>
+                        <option value="20">20 Years</option>
+                        <option value="15">15 Years</option>
+                        <option value="10">10 Years</option>
+                    </select>
+                </div>
+
+                <!-- US Specific Inputs -->
+                <div id="us-inputs">
+                    <div class="input-group">
+                        <label for="propertyTax">Property Tax (Annual %)</label>
+                        <input type="number" id="propertyTax" value="1.2" step="0.1">
+                    </div>
+                    <div class="input-group">
+                        <label for="insurance">Home Insurance (Annual $)</label>
+                        <input type="number" id="insurance" value="1200" step="100">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results -->
+            <div class="calc-results">
+                <div class="result-item">
+                    <div class="result-label">Monthly Payment</div>
+                    <div id="monthlyPayment" class="result-value highlight">$0.00</div>
+                </div>
+
+                <div class="result-item">
+                    <div class="result-label">Principal & Interest</div>
+                    <div id="principalInterest" class="result-value">$0.00</div>
+                </div>
+
+                <div id="taxInsuranceRow" class="result-item">
+                    <div class="result-label">Taxes & Insurance</div>
+                    <div id="taxesInsurance" class="result-value">$0.00</div>
+                </div>
+
+                <div class="result-item">
+                    <div class="result-label">Total Loan Amount</div>
+                    <div id="totalLoan" class="result-value">$0.00</div>
+                </div>
+
+                <div style="margin-top: auto; padding-top: 1.5rem; border-top: 1px solid var(--border-color); font-size: 0.8rem; color: var(--text-light); line-height: 1.4;">
+                    <strong>Notice:</strong> This calculation is for estimation purposes only. Actual rates and payments may vary based on lender terms, credit score, and market conditions. This is not a commitment to lend.
+                </div>
+            </div>
+        </div>
+
+        <!-- Educational Content -->
+        <section class="seo-section">
+            <h2>Understanding Your Mortgage Payment</h2>
+            <p>Your monthly mortgage payment is more than just repaying the money you borrowed. In the USA, it typically includes <strong>PITI</strong>: Principal, Interest, Taxes, and Insurance. In the UK, payments are often focused on Principal and Interest, but you should also factor in building insurance and potential service charges.</p>
+            
+            <div style="margin: 2rem 0; padding: 2rem; background: var(--bg-color); border-radius: 8px;">
+                <h3>Usage Example: Typical US Home Purchase</h3>
+                <p>If you purchase a home for <strong>$400,000</strong> with a <strong>20% down payment ($80,000)</strong>, your loan amount would be $320,000. At a <strong>6.5% interest rate</strong> for 30 years, your principal and interest payment would be approximately <strong>$2,022.62</strong> per month. When you add property taxes (~$400/mo) and insurance (~$100/mo), your total monthly commitment would be roughly <strong>$2,522.62</strong>.</p>
+            </div>
+            
+            <div class="faq-container">
+                <h3>Frequently Asked Questions</h3>
+                <div class="faq-item">
+                    <div class="faq-question">What is a good down payment? <span>+</span></div>
+                    <div class="faq-answer">While 20% is often recommended to avoid Private Mortgage Insurance (PMI) in the US, many buyers put down as little as 3-5% depending on the loan type. In the UK, a larger deposit (e.g., 10-15%) typically unlocks lower interest rate tiers.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How does interest rate affect my payment? <span>+</span></div>
+                    <div class="faq-answer">Even a 1% difference in interest rates can save or cost you tens of thousands of dollars over the life of a 30-year loan. For example, on a $300,000 loan, 1% extra in interest adds about $200 per month to your payment.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What is the 28/36 rule for mortgage affordability? <span>+</span></div>
+                    <div class="faq-answer">The 28/36 rule suggests that your monthly housing costs should not exceed 28% of your gross monthly income, and your total debt payments should not exceed 36%. This is a common benchmark used by US lenders.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Can I get a mortgage with bad credit? <span>+</span></div>
+                    <div class="faq-answer">Yes, but it will likely come with a higher interest rate and a larger down payment requirement. In the US, FHA loans are designed for borrowers with lower credit scores. In the UK, specialist lenders offer "adverse credit" mortgages.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Related Tools & Guides -->
+        <section class="related-tools">
+            <h3>Related Tools & Guides</h3>
+            <div class="related-grid">
+                <a href="rent-vs-buy.html" class="related-card">
+                    <h4>Rent vs Buy Calculator</h4>
+                    <p>Compare the long-term financial impact of renting versus buying a home.</p>
+                    <span class="learn-more">Try Tool →</span>
+                </a>
+                <a href="dti.html" class="related-card">
+                    <h4>DTI Calculator</h4>
+                    <p>Check your Debt-to-Income ratio to see if you qualify for a mortgage.</p>
+                    <span class="learn-more">Try Tool →</span>
+                </a>
+                <a href="../guides/how-much-mortgage-can-i-afford.html" class="related-card">
+                    <h4>Mortgage Affordability Guide</h4>
+                    <p>Learn how lenders calculate your maximum loan amount and what to watch for.</p>
+                    <span class="learn-more">Read Guide →</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Amortization Table -->
+        <section>
+            <h3>Amortization Schedule</h3>
+            <div class="table-responsive">
+                <table id="amortizationTable">
+                    <thead>
+                        <tr>
+                            <th>Year</th>
+                            <th>Beginning Balance</th>
+                            <th>Principal Paid</th>
+                            <th>Interest Paid</th>
+                            <th>Ending Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Generated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 TrustCalc Financial. <a href="../legal/privacy-policy.html" style="color: #adbdcc;" data-i18n="privacy">Privacy Policy</a> | <a href="../legal/disclaimer.html" style="color: #adbdcc;" data-i18n="disclaimer">Disclaimer</a></p>
+                <p>For estimation purposes only. Not financial advice.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/common.js"></script>
+    <script src="../assets/js/mortgage.js"></script>
+</body>
+</html>

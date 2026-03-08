@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inflation Calculator USA & UK – Purchasing Power Loss | TrustCalc</title>
+    <meta name="description" content="Calculate how inflation affects your money over time using US CPI and UK inflation data. See your future purchasing power clearly with TrustCalc.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jmadhavp.github.io/trustcalc/calculators/inflation.html">
+    <meta property="og:title" content="Inflation Calculator USA & UK – TrustCalc">
+    <meta property="og:description" content="Measure the impact of inflation on your savings and purchasing power.">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="https://jmadhavp.github.io/trustcalc/calculators/inflation.html">
+    <meta name="twitter:title" content="Inflation Calculator USA & UK – TrustCalc">
+    <meta name="twitter:description" content="See how inflation erosive your wealth over time.">
+    
+    <link rel="canonical" href="https://jmadhavp.github.io/trustcalc/calculators/inflation.html">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/calculator.css">
+
+    <!-- JSON-LD FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is CPI?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Consumer Price Index (CPI) measures the average change over time in the prices paid by urban consumers for a market basket of consumer goods and services. It is the most common measure of inflation in both the US and the UK."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I protect against inflation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "To protect your wealth, you need your money to grow faster than the inflation rate. This typically involves investing in assets like stocks, real estate, or inflation-protected bonds (such as TIPS in the US or Index-Linked Gilts in the UK)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the 'Rule of 72' in inflation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Rule of 72 is a quick way to estimate how long it will take for the value of your money to be cut in half. Divide 72 by the annual inflation rate. For example, at 3% inflation, your purchasing power will halve in 24 years."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does the central bank target 2% inflation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A small, predictable amount of inflation (usually 2%) is considered healthy for the economy. It encourages consumers to spend and invest rather than hoarding cash, which can lead to economic stagnation."
+          }
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="container nav-wrapper">
+            <a href="../index.html" class="logo">Trust<span>Calc</span></a>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#calculators">Calculators</a></li>
+                </ul>
+            </nav>
+            <a href="../index.html#calculators" class="btn btn-primary">All Tools</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <section style="margin-top: 3rem;">
+            <h1>Inflation Calculator (USA & UK)</h1>
+            <p style="color: var(--text-light);">Measure the impact of inflation on your purchasing power in the USA and UK.</p>
+        </section>
+
+        <div class="calc-container">
+            <!-- Inputs -->
+            <div class="calc-inputs">
+                <div class="input-group">
+                    <label for="startingAmount">Amount to Calculate</label>
+                    <input type="number" id="startingAmount" value="10000" step="100">
+                </div>
+
+                <div class="input-group">
+                    <label for="years">Number of Years</label>
+                    <input type="number" id="years" value="10" min="1" max="100">
+                </div>
+
+                <div class="input-group">
+                    <label for="inflationRate">Annual Inflation Rate (%)</label>
+                    <input type="number" id="inflationRate" value="3.5" step="0.1">
+                </div>
+
+                <div class="input-group">
+                    <label for="currency">Region / Currency</label>
+                    <select id="currency">
+                        <option value="US">USA (USD $)</option>
+                        <option value="UK">UK (GBP £)</option>
+                    </select>
+                </div>
+                
+                <p style="font-size: 0.8rem; color: var(--text-light); margin-top: 1rem;">
+                    * Historical average inflation is approx. 3.3% in the US and 2.5% in the UK (CPI).
+                </p>
+            </div>
+
+            <!-- Results -->
+            <div class="calc-results">
+                <div class="result-item">
+                    <div class="result-label">Future Value (Purchasing Power)</div>
+                    <div id="futureValue" class="result-value highlight">$0.00</div>
+                </div>
+
+                <div class="result-item">
+                    <div class="result-label">Total Value Loss</div>
+                    <div id="totalLoss" class="result-value" style="color: var(--error-color);">$0.00</div>
+                </div>
+
+                <div class="result-item">
+                    <div class="result-label">Cumulative Inflation</div>
+                    <div id="cumulativeInflation" class="result-value">0%</div>
+                </div>
+
+                <div style="margin-top: auto; padding-top: 1.5rem; border-top: 1px solid var(--border-color); font-size: 0.8rem; color: var(--text-light); line-height: 1.4;">
+                    <strong>Notice:</strong> This calculation is for estimation purposes only based on fixed inflation assumptions. Actual historical inflation varies by month and year. This is not financial advice.
+                </div>
+            </div>
+        </div>
+
+        <section class="seo-section">
+            <h2>How Inflation Erodes Wealth</h2>
+            <p>Inflation is the rate at which the general level of prices for goods and services is rising. As inflation rises, every dollar (or pound) you own buys a smaller percentage of a good or service. This is why <strong>purchasing power</strong> is a critical concept for long-term financial planning and retirement.</p>
+            
+            <div style="margin: 2rem 0; padding: 2rem; background: var(--bg-color); border-radius: 8px;">
+                <h3>Usage Example: The Impact of 3.5% Inflation</h3>
+                <p>If you have <strong>$10,000</strong> in a savings account today and the annual inflation rate is <strong>3.5%</strong>, in <strong>10 years</strong>, your $10,000 will only have the purchasing power of about <strong>$7,089</strong> today. You would have effectively lost nearly 30% of your wealth's value due to the rising cost of goods and services.</p>
+            </div>
+            
+            <div class="faq-container">
+                <h3>Frequently Asked Questions</h3>
+                <div class="faq-item">
+                    <div class="faq-question">What is CPI? <span>+</span></div>
+                    <div class="faq-answer">The Consumer Price Index (CPI) measures the average change over time in the prices paid by urban consumers for a market basket of consumer goods and services. It is the most common measure of inflation in both the US and the UK.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How can I protect against inflation? <span>+</span></div>
+                    <div class="faq-answer">To protect your wealth, you need your money to grow faster than the inflation rate. This typically involves investing in assets like stocks, real estate, or inflation-protected bonds (such as TIPS in the US or Index-Linked Gilts in the UK).</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What is the "Rule of 72" in inflation? <span>+</span></div>
+                    <div class="faq-answer">The Rule of 72 is a quick way to estimate how long it will take for the value of your money to be cut in half. Divide 72 by the annual inflation rate. For example, at 3% inflation, your purchasing power will halve in 24 years.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Why does the central bank target 2% inflation? <span>+</span></div>
+                    <div class="faq-answer">A small, predictable amount of inflation (usually 2%) is considered healthy for the economy. It encourages consumers to spend and invest rather than hoarding cash, which can lead to economic stagnation.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Related Tools & Guides -->
+        <section class="related-tools">
+            <h3>Related Tools & Guides</h3>
+            <div class="related-grid">
+                <a href="salary-to-hourly.html" class="related-card">
+                    <h4>Salary to Hourly</h4>
+                    <p>Calculate if your salary increases are keeping up with the rate of inflation.</p>
+                    <span class="learn-more">Try Tool →</span>
+                </a>
+                <a href="mortgage.html" class="related-card">
+                    <h4>Mortgage Calculator</h4>
+                    <p>Learn how fixed-rate mortgages can act as a powerful hedge against inflation.</p>
+                    <span class="learn-more">Try Tool →</span>
+                </a>
+                <a href="../guides/understanding-inflation-purchasing-power.html" class="related-card">
+                    <h4>Inflation & Power Guide</h4>
+                    <p>Deep dive into how inflation works and how to protect your long-term savings.</p>
+                    <span class="learn-more">Read Guide →</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 TrustCalc Financial. <a href="../legal/privacy-policy.html" style="color: #adbdcc;">Privacy Policy</a> | <a href="../legal/disclaimer.html" style="color: #adbdcc;">Disclaimer</a></p>
+                <p>For estimation purposes only. Not financial advice.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/common.js"></script>
+    <script src="../assets/js/inflation.js"></script>
+</body>
+</html>
