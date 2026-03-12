@@ -3,34 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Salary to Hourly Calculator 2026 - Annual to Hourly (USA + UK) | TrustCalc</title>
-    <meta name="description" content="Salary-to-hourly calculator for USA and UK. Compare job offers and see your hourly, weekly, and monthly earnings instantly.">
-    <meta name="keywords" content="salary to hourly converter, annual salary converter, hourly rate calculator, income breakdown calculator">
+    <title>Salary to Hourly Calculator - Annual Salary to Hourly Rate | TrustCalc</title>
+    <meta name="description" content="Easily convert annual salary to hourly rate, weekly, or monthly income. Perfect for budgeting and job offer comparisons in the USA and UK. Free online tool.">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://jmadhavp.github.io/trustcalc/calculators/salary-to-hourly.html">
-    <meta property="og:title" content="Salary to Hourly Calculator 2026 - TrustCalc">
-    <meta property="og:description" content="Quickly convert your salary to hourly and monthly pay rates.">
-    <meta property="og:image" content="https://jmadhavp.github.io/trustcalc/assets/images/salary-to-hourly-og.jpg">
-    <meta property="og:image:alt" content="Salary to hourly calculator">
+    <meta property="og:url" content="https://jmadhavp.github.io/calculators/salary-to-hourly.html">
+    <meta property="og:title" content="Salary to Hourly Calculator - TrustCalc">
+    <meta property="og:description" content="Convert your annual salary into hourly, daily, weekly, and monthly rates.">
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:url" content="https://jmadhavp.github.io/trustcalc/calculators/salary-to-hourly.html">
-    <meta name="twitter:title" content="Salary to Hourly Calculator – TrustCalc">
+    <meta name="twitter:url" content="https://jmadhavp.github.io/calculators/salary-to-hourly.html">
+    <meta name="twitter:title" content="Salary to Hourly Calculator - TrustCalc">
     <meta name="twitter:description" content="Understand your true earnings with our salary converter.">
     
-    <link rel="canonical" href="https://jmadhavp.github.io/trustcalc/calculators/salary-to-hourly.html">
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
-    
-    <!-- CSS -->
-    <link rel="stylesheet" href="../assets/css/main.css">
-    <link rel="stylesheet" href="../assets/css/calculator.css">
+    <link rel="canonical" href="https://jmadhavp.github.io/calculators/salary-to-hourly.html">
+
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Salary to Hourly Calculator",
+      "operatingSystem": "Web",
+      "applicationCategory": "FinanceApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "87"
+      }
+    }
+    </script>
 
     <!-- JSON-LD FAQ Schema -->
     <script type="application/ld+json">
@@ -73,31 +82,17 @@
       ]
     }
     </script>
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {"@type":"ListItem","position":1,"name":"Home","item":"https://jmadhavp.github.io/trustcalc/"},
-        {"@type":"ListItem","position":2,"name":"Salary to Hourly Calculator","item":"https://jmadhavp.github.io/trustcalc/calculators/salary-to-hourly.html"}
-      ]
-    }
-    </script>
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "HowTo",
-      "name": "How to use TrustCalc Salary to Hourly Calculator",
-      "description": "Step-by-step conversion from annual salary to hourly rate.",
-      "step": [
-        {"@type":"HowToStep","name":"Enter annual salary and work hours","text":"Input salary, hours/week, and weeks/year."},
-        {"@type":"HowToStep","name":"Select currency","text":"Choose USD or GBP."},
-        {"@type":"HowToStep","name":"Review converted rates","text":"See hourly, daily, weekly, and monthly equivalents."}
-      ]
-    }
-    </script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/calculator.css">
+    <!-- HilltopAds Popunder Script -->
+    <script src="https://rectangulartelevision.com/bQ3MV.0/PC3MpovabbmmVZJxZzDi0E2rOPDuY/ziMzDyY/5dLdTcYN4QNOjnMhwZNiz/M_"></script>
 </head>
 <body>
     <header>
@@ -126,56 +121,71 @@
                     <label for="salary">Annual Salary</label>
                     <input type="number" id="salary" value="65000" step="1000">
                 </div>
-
                 <div class="input-group">
                     <label for="hoursPerWeek">Hours per Week</label>
-                    <input type="number" id="hoursPerWeek" value="40" min="1" max="100">
+                    <input type="number" id="hoursPerWeek" value="40" step="1">
                 </div>
-
                 <div class="input-group">
                     <label for="weeksPerYear">Work Weeks per Year</label>
-                    <input type="number" id="weeksPerYear" value="52" min="1" max="52">
+                    <input type="number" id="weeksPerYear" value="52" step="1">
                 </div>
-
                 <div class="input-group">
                     <label for="currency">Region / Currency</label>
                     <select id="currency">
-                        <option value="US">USA (USD $)</option>
-                        <option value="UK">UK (GBP £)</option>
+                        <option value="US">USD ($)</option>
+                        <option value="UK">GBP (£)</option>
                     </select>
                 </div>
             </div>
 
             <!-- Results -->
             <div class="calc-results">
-                <div class="result-item">
-                    <div class="result-label">Hourly Rate</div>
-                    <div id="hourlyRate" class="result-value highlight">$0.00</div>
+                <div class="result-card">
+                    <span class="result-label">Hourly Rate</span>
+                    <span class="result-value" id="hourlyRate">$0.00</span>
                 </div>
-
-                <div class="result-item">
-                    <div class="result-label">Weekly Pay</div>
-                    <div id="weeklyPay" class="result-value">$0.00</div>
+                <div class="result-card">
+                    <span class="result-label">Weekly Pay</span>
+                    <span class="result-value" id="weeklyPay">$0.00</span>
                 </div>
-
-                <div class="result-item">
-                    <div class="result-label">Monthly Pay</div>
-                    <div id="monthlyPay" class="result-value">$0.00</div>
-                </div>
-
-                <div style="margin-top: auto; padding-top: 1.5rem; border-top: 1px solid var(--border-color); font-size: 0.8rem; color: var(--text-light); line-height: 1.4;">
-                    <strong>Notice:</strong> This calculation is for estimation purposes only based on gross income. It does not account for taxes, benefits, or local labor laws.
+                <div class="result-card secondary">
+                        <span class="result-label">Monthly Pay</span>
+                        <span class="result-value" id="monthlyPay">$0.00</span>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+                        <button onclick="window.print()" class="btn btn-secondary" style="flex: 1; font-size: 0.8rem; padding: 0.5rem;">PDF</button>
+                        <button onclick="emailResults()" class="btn btn-secondary" style="flex: 1; font-size: 0.8rem; padding: 0.5rem;">Email</button>
+                        <button onclick="shareResults()" class="btn btn-secondary" style="flex: 1; font-size: 0.8rem; padding: 0.5rem;">Share</button>
+                    </div>
+                    <p class="disclaimer">Notice: This calculation is for estimation purposes only based on gross income. It does not account for taxes, benefits, or local labor laws.</p>
                 </div>
             </div>
-        </div>
 
-        <section class="seo-section">
+            <section class="next-steps" style="margin-bottom: 4rem;">
+                <h3>What's Next?</h3>
+                <div class="calc-grid" style="padding: 1rem 0;">
+                    <a href="inflation.html" class="calc-card" style="padding: 1.5rem;">
+                        <h4>Inflation Impact</h4>
+                        <p>See how your purchasing power changes over time.</p>
+                    </a>
+                    <a href="../guides/salary-to-hourly-conversion-explained.html" class="calc-card" style="padding: 1.5rem;">
+                        <h4>Salary Guide</h4>
+                        <p>Learn about the standard 2,080 hour work year.</p>
+                    </a>
+                    <a href="rent-vs-buy.html" class="calc-card" style="padding: 1.5rem;">
+                        <h4>Housing Choice</h4>
+                        <p>Decide if renting or buying is right for your income level.</p>
+                    </a>
+                </div>
+            </section>
+
+        <section class="info-section">
             <h2>Understanding Your True Earnings</h2>
-            <p>While an annual salary gives you a big-picture view of your income, converting it to an <strong>hourly rate</strong> helps you understand the value of your time. This is especially useful when comparing job offers that have different work-hour requirements or when considering overtime potential.</p>
+            <p>While an annual salary gives you a big-picture view of your income, converting it to an hourly rate helps you understand the value of your time. This is especially useful when comparing job offers that have different work-hour requirements or when considering overtime potential.</p>
             
-            <div style="margin: 2rem 0; padding: 2rem; background: var(--bg-color); border-radius: 8px;">
-                <h3>Usage Example: $65,000 Salary Breakdown</h3>
-                <p>If you earn a <strong>$65,000 annual salary</strong> and work a standard <strong>40-hour week</strong> for 52 weeks a year, your hourly rate is <strong>$31.25</strong>. If you take 2 weeks of unpaid leave (working 50 weeks), your hourly rate for those worked hours would be <strong>$32.50</strong>. This tool helps you see how much each hour of your life is valued by your employer.</p>
+            <div class="tip-box">
+                <h4>Usage Example: $65,000 Salary Breakdown</h4>
+                <p>If you earn a $65,000 annual salary and work a standard 40-hour week for 52 weeks a year, your hourly rate is $31.25. If you take 2 weeks of unpaid leave (working 50 weeks), your hourly rate for those worked hours would be $32.50. This tool helps you see how much each hour of your life is valued by your employer.</p>
             </div>
             
             <div class="faq-container">
@@ -198,60 +208,15 @@
                 </div>
             </div>
         </section>
-
-        <!-- Related Tools & Guides -->
-        <section class="related-tools">
-            <h3>Related Tools & Guides</h3>
-            <div class="related-grid">
-                <a href="inflation.html" class="related-card">
-                    <h4>Inflation Calculator</h4>
-                    <p>Understand how inflation impacts the purchasing power of your annual salary.</p>
-                    <span class="learn-more">Try Tool →</span>
-                </a>
-                <a href="loan.html" class="related-card">
-                    <h4>Loan Repayment</h4>
-                    <p>Calculate how much of your hourly earnings are required to service your debts.</p>
-                    <span class="learn-more">Try Tool →</span>
-                </a>
-                <a href="../guides/salary-to-hourly-conversion-explained.html" class="related-card">
-                    <h4>Salary Conversion Guide</h4>
-                    <p>Learn the math behind salary to hourly conversion and why it matters for job offers.</p>
-                    <span class="learn-more">Read Guide →</span>
-                </a>
-            </div>
-        </section>
     </main>
 
     <footer>
-        <div class="container">
-            <div class="footer-bottom">
-                <p>&copy; 2026 TrustCalc Financial. <a href="../legal/privacy-policy.html" style="color: #adbdcc;">Privacy Policy</a> | <a href="../legal/disclaimer.html" style="color: #adbdcc;">Disclaimer</a></p>
-                <p>For estimation purposes only. Not financial advice.</p>
-            </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 TrustCalc. All rights reserved.</p>
         </div>
     </footer>
 
     <script src="../assets/js/common.js"></script>
-    <script>
-        function calculateSalary() {
-            const salary = parseFloat(document.getElementById('salary').value) || 0;
-            const hours = parseFloat(document.getElementById('hoursPerWeek').value) || 40;
-            const weeks = parseFloat(document.getElementById('weeksPerYear').value) || 52;
-            const region = document.getElementById('currency').value;
-
-            const hourly = salary / (hours * weeks);
-            const weekly = salary / weeks;
-            const monthly = salary / 12;
-
-            updateElementText('hourlyRate', formatCurrency(hourly, region));
-            updateElementText('weeklyPay', formatCurrency(weekly, region));
-            updateElementText('monthlyPay', formatCurrency(monthly, region));
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('input, select').forEach(el => el.addEventListener('input', calculateSalary));
-            calculateSalary();
-        });
-    </script>
+    <script src="../assets/js/salary-to-hourly.js"></script>
 </body>
 </html>

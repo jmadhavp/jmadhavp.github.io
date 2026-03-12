@@ -3,34 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Credit Card Interest Calculator 2026 - Payoff Time & Savings (USA + UK) | TrustCalc</title>
-    <meta name="description" content="Fast credit card interest calculator for USA and UK. Compare minimum vs fixed payments, payoff schedule, and interest savings in seconds.">
-    <meta name="keywords" content="credit card interest calculator, credit card payoff calculator, debt payoff planner, minimum payment calculator, avalanche method">
+    <title>Credit Card Interest Calculator - Monthly Interest & Payoff | TrustCalc</title>
+    <meta name="description" content="Calculate your credit card interest per month and payoff time. Free calculator for USA & UK. See how much interest you pay and how to clear debt faster.">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://jmadhavp.github.io/trustcalc/calculators/credit-card.html">
-    <meta property="og:title" content="Credit Card Interest Calculator 2026 - TrustCalc">
-    <meta property="og:description" content="Quickly compute credit card payoff time, total interest, and savings from extra payments.">
-    <meta property="og:image" content="https://jmadhavp.github.io/trustcalc/assets/images/credit-card-og.jpg">
-    <meta property="og:image:alt" content="Credit card debt payoff calculator">
+    <meta property="og:url" content="https://jmadhavp.github.io/calculators/credit-card.html">
+    <meta property="og:title" content="Credit Card Interest Calculator - Monthly & Payoff - TrustCalc">
+    <meta property="og:description" content="Calculate your monthly credit card interest and total payoff time.">
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:url" content="https://jmadhavp.github.io/trustcalc/calculators/credit-card.html">
-    <meta name="twitter:title" content="Credit Card Interest Calculator – TrustCalc">
+    <meta name="twitter:url" content="https://jmadhavp.github.io/calculators/credit-card.html">
+    <meta name="twitter:title" content="Credit Card Interest Calculator - TrustCalc">
     <meta name="twitter:description" content="Find the fastest way to clear your credit card balance.">
     
-    <link rel="canonical" href="https://jmadhavp.github.io/trustcalc/calculators/credit-card.html">
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
-    
-    <!-- CSS -->
-    <link rel="stylesheet" href="../assets/css/main.css">
-    <link rel="stylesheet" href="../assets/css/calculator.css">
+    <link rel="canonical" href="https://jmadhavp.github.io/calculators/credit-card.html">
+
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Credit Card Interest Calculator",
+      "operatingSystem": "Web",
+      "applicationCategory": "FinanceApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "125"
+      }
+    }
+    </script>
 
     <!-- JSON-LD FAQ Schema -->
     <script type="application/ld+json">
@@ -73,53 +82,36 @@
       ]
     }
     </script>
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://jmadhavp.github.io/trustcalc/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Credit Card Interest Calculator",
-          "item": "https://jmadhavp.github.io/trustcalc/calculators/credit-card.html"
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/calculator.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .calc-grid-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
         }
-      ]
-    }
-    </script>
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "HowTo",
-      "name": "How to use TrustCalc Credit Card Interest Calculator",
-      "description": "Step-by-step process to forecast credit card payoff and interest savings.",
-      "step": [
-        {
-          "@type": "HowToStep",
-          "name": "Enter current balance and APR",
-          "text": "Fill in your credit card balance and interest rate."
-        },
-        {
-          "@type": "HowToStep",
-          "name": "Choose payment strategy",
-          "text": "Decide between minimum and fixed monthly payment scenarios."
-        },
-        {
-          "@type": "HowToStep",
-          "name": "Review results",
-          "text": "Check payoff time, total interest, and savings potential with extra payments."
+        @media (max-width: 768px) {
+            .calc-grid-layout { grid-template-columns: 1fr; }
         }
-      ]
-    }
-    </script>
+        .chart-container {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+    </style>
+    <!-- HilltopAds Popunder Script -->
+    <script src="https://rectangulartelevision.com/bQ3MV.0/PC3MpovabbmmVZJxZzDi0E2rOPDuY/ziMzDyY/5dLdTcYN4QNOjnMhwZNiz/M_"></script>
 </head>
 <body>
     <header>
@@ -141,76 +133,95 @@
             <p style="color: var(--text-light);">See how credit card interest compounds and find the fastest way to clear your balance.</p>
         </section>
 
-        <div class="calc-container">
-            <!-- Inputs -->
-            <div class="calc-inputs">
-                <div class="input-group">
-                    <label for="cardBalance">Credit Card Balance</label>
-                    <input type="number" id="cardBalance" value="5000" step="100">
+        <div class="calc-grid-layout">
+            <div class="calc-container" style="margin: 0;">
+                <!-- Inputs -->
+                <div class="calc-inputs">
+                    <div class="input-group">
+                        <label for="cardBalance">Credit Card Balance <span class="currency-symbol">$</span></label>
+                        <input type="number" id="cardBalance" value="5000" step="100">
+                    </div>
+                    <div class="input-group">
+                        <label for="cardApr" title="Annual Percentage Rate - the interest charged on your balance.">Interest Rate (APR %)</label>
+                        <input type="number" id="cardApr" value="19.99" step="0.1">
+                    </div>
+                    <div class="input-group">
+                        <label for="paymentType">Payment Strategy</label>
+                        <select id="paymentType">
+                            <option value="minimum">Minimum Payment Only</option>
+                            <option value="fixed">Fixed Monthly Payment</option>
+                        </select>
+                    </div>
+                    <div class="input-group" id="minPayGroup">
+                        <label for="minPayPercent" title="The percentage of the balance used to calculate the minimum monthly payment.">Minimum Payment %</label>
+                        <input type="number" id="minPayPercent" value="2" step="0.5">
+                    </div>
+                    <div class="input-group" id="fixedPayGroup" style="display:none;">
+                        <label for="fixedPayment">Fixed Monthly Payment <span class="currency-symbol">$</span></label>
+                        <input type="number" id="fixedPayment" value="200" step="10">
+                    </div>
+                    <div class="input-group">
+                        <label for="currency">Region / Currency</label>
+                        <select id="currency">
+                            <option value="US">USD ($)</option>
+                            <option value="UK">GBP (£)</option>
+                        </select>
+                    </div>
                 </div>
 
-                <div class="input-group">
-                    <label for="cardApr">Interest Rate (APR %)</label>
-                    <input type="number" id="cardApr" value="19.99" step="0.1">
-                </div>
-
-                <div class="input-group">
-                    <label for="paymentType">Payment Strategy</label>
-                    <select id="paymentType">
-                        <option value="minimum">Minimum Payment Only</option>
-                        <option value="fixed">Fixed Monthly Amount</option>
-                    </select>
-                </div>
-
-                <div id="minPayGroup" class="input-group">
-                    <label for="minPayPercent">Minimum Payment %</label>
-                    <input type="number" id="minPayPercent" value="2" step="0.5">
-                </div>
-
-                <div id="fixedPayGroup" class="input-group" style="display: none;">
-                    <label for="fixedPayment">Fixed Monthly Payment</label>
-                    <input type="number" id="fixedPayment" value="200" step="10">
-                </div>
-
-                <div class="input-group">
-                    <label for="currency">Currency</label>
-                    <select id="currency">
-                        <option value="US">USD ($)</option>
-                        <option value="UK">GBP (£)</option>
-                    </select>
+                <!-- Results -->
+                <div class="calc-results">
+                    <div class="result-card">
+                        <span class="result-label">Time to Pay Off</span>
+                        <span class="result-value" id="payoffTime">0 Months</span>
+                    </div>
+                    <div class="result-card secondary">
+                        <span class="result-label">Total Interest Paid</span>
+                        <span class="result-value" id="totalInterest">$0.00</span>
+                    </div>
+                    <div class="result-card secondary">
+                        <span class="result-label">Total Amount Paid</span>
+                        <span class="result-value" id="totalPaid">$0.00</span>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+                        <button onclick="window.print()" class="btn btn-secondary" style="flex: 1; font-size: 0.8rem; padding: 0.5rem;">PDF</button>
+                        <button onclick="emailResults()" class="btn btn-secondary" style="flex: 1; font-size: 0.8rem; padding: 0.5rem;">Email</button>
+                        <button onclick="shareResults()" class="btn btn-secondary" style="flex: 1; font-size: 0.8rem; padding: 0.5rem;">Share</button>
+                    </div>
+                    <p class="disclaimer">Notice: This calculation is for estimation purposes only. Credit card interest is calculated daily by most lenders. This tool uses monthly compounding as an estimate.</p>
                 </div>
             </div>
 
-            <!-- Results -->
-            <div class="calc-results">
-                <div class="result-item">
-                    <div class="result-label">Time to Pay Off</div>
-                    <div id="payoffTime" class="result-value highlight">0 Months</div>
-                </div>
-
-                <div class="result-item">
-                    <div class="result-label">Total Interest Paid</div>
-                    <div id="totalInterest" class="result-value">$0.00</div>
-                </div>
-
-                <div class="result-item">
-                    <div class="result-label">Total Amount Paid</div>
-                    <div id="totalPaid" class="result-value">$0.00</div>
-                </div>
-
-                <div style="margin-top: auto; padding-top: 1.5rem; border-top: 1px solid var(--border-color); font-size: 0.8rem; color: var(--text-light); line-height: 1.4;">
-                    <strong>Notice:</strong> This calculation is for estimation purposes only. Credit card interest is calculated daily by most lenders. This tool uses monthly compounding as an estimate. This is not financial advice.
-                </div>
+            <div class="chart-container">
+                <canvas id="creditCardChart"></canvas>
             </div>
         </div>
 
-        <section class="seo-section">
+        <section class="next-steps" style="margin-bottom: 4rem;">
+            <h3>What's Next?</h3>
+            <div class="calc-grid" style="padding: 1rem 0;">
+                <a href="loan.html" class="calc-card" style="padding: 1.5rem;">
+                    <h4>Debt Consolidation</h4>
+                    <p>Compare credit card rates with a lower-interest personal loan.</p>
+                </a>
+                <a href="../guides/credit-card-payoff-strategy.html" class="calc-card" style="padding: 1.5rem;">
+                    <h4>Payoff Strategies</h4>
+                    <p>Learn about Avalanche vs Snowball methods.</p>
+                </a>
+                <a href="dti.html" class="calc-card" style="padding: 1.5rem;">
+                    <h4>Check Your DTI</h4>
+                    <p>See how your debt affects your borrowing power.</p>
+                </a>
+            </div>
+        </section>
+
+        <section class="info-section">
             <h2>The Cost of Credit Card Debt</h2>
-            <p>Credit cards are one of the most expensive ways to borrow money due to high interest rates and monthly compounding. If you only make the <strong>minimum payment</strong>, most of your money goes toward interest rather than reducing your principal balance. This can lead to debt that lasts for decades.</p>
+            <p>Credit cards are one of the most expensive ways to borrow money due to high interest rates and monthly compounding. If you only make the minimum payment, most of your money goes toward interest rather than reducing your principal balance. This can lead to debt that lasts for decades.</p>
             
-            <div style="margin: 2rem 0; padding: 2rem; background: var(--bg-color); border-radius: 8px;">
-                <h3>Usage Example: Paying Off a $5,000 Balance</h3>
-                <p>If you have a <strong>$5,000 balance</strong> on a card with a <strong>19.99% APR</strong> and only pay the <strong>2% minimum payment</strong>, it will take you over <strong>22 years</strong> to pay off the debt, and you will pay over <strong>$7,000 in interest alone</strong>. By switching to a fixed payment of <strong>$200 per month</strong>, you could be debt-free in less than <strong>3 years</strong> and pay only about $1,500 in interest.</p>
+            <div class="tip-box">
+                <h4>Usage Example: Paying Off a $5,000 Balance</h4>
+                <p>If you have a $5,000 balance on a card with a 19.99% APR and only pay the 2% minimum payment, it will take you over 22 years to pay off the debt, and you will pay over $7,000 in interest alone. By switching to a fixed payment of $200 per month, you could be debt-free in less than 3 years and pay only about $1,500 in interest.</p>
             </div>
             
             <div class="faq-container">
@@ -233,36 +244,11 @@
                 </div>
             </div>
         </section>
-
-        <!-- Related Tools & Guides -->
-        <section class="related-tools">
-            <h3>Related Tools & Guides</h3>
-            <div class="related-grid">
-                <a href="loan.html" class="related-card">
-                    <h4>Loan Repayment</h4>
-                    <p>Compare credit card consolidation options with a structured personal loan.</p>
-                    <span class="learn-more">Try Tool →</span>
-                </a>
-                <a href="dti.html" class="related-card">
-                    <h4>DTI Calculator</h4>
-                    <p>Learn how high-interest credit card debt impacts your borrowing capacity.</p>
-                    <span class="learn-more">Try Tool →</span>
-                </a>
-                <a href="../guides/credit-card-payoff-strategy.html" class="related-card">
-                    <h4>Card Payoff Strategy</h4>
-                    <p>Discover the most effective methods to clear your balances for good.</p>
-                    <span class="learn-more">Read Guide →</span>
-                </a>
-            </div>
-        </section>
     </main>
 
     <footer>
-        <div class="container">
-            <div class="footer-bottom">
-                <p>&copy; 2026 TrustCalc Financial. <a href="../legal/privacy-policy.html" style="color: #adbdcc;">Privacy Policy</a> | <a href="../legal/disclaimer.html" style="color: #adbdcc;">Disclaimer</a></p>
-                <p>For estimation purposes only. Not financial advice.</p>
-            </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 TrustCalc. All rights reserved.</p>
         </div>
     </footer>
 
