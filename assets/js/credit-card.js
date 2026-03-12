@@ -2,62 +2,45 @@
  * Credit Card Interest Calculator Logic
  */
 
-let creditCardChart = null;
-
 function calculateCreditCard() {
     const balanceInput = document.getElementById('cardBalance');
     const aprInput = document.getElementById('cardApr');
-    const paymentType = document.getElementById('paymentType');
-    const minPayPercentInput = document.getElementById('minPayPercent');
-    const fixedPaymentInput = document.getElementById('fixedPayment');
+    const paymentType = document.getElementById('paymentType').value;
+    const minPayPercent = parseFloat(document.getElementById('minPayPercent').value) / 100 || 0.02;
+    const fixedPayment = parseFloat(document.getElementById('fixedPayment').value) || 0;
+    const region = document.getElementById('currency').value;
+
+    let balance = parseFloat(balanceInput.value) || 0;
+    const monthlyRate = (parseFloat(aprInput.value) / 100) / 12;
     
-    if (!balanceInput || !aprInput || !paymentType) return;
-
-    const initialBalance = parseFloat(balanceInput.value) || 0;
-    const apr = parseFloat(aprInput.value) || 0;
-    const monthlyRate = (apr / 100) / 12;
-    const type = paymentType.value;
-    const minPayPercent = parseFloat(minPayPercentInput.value) / 100 || 0.02;
-    const fixedPayment = parseFloat(fixedPaymentInput.value) || 0;
-
-    let balance = initialBalance;
     let totalInterest = 0;
     let months = 0;
     const maxMonths = 600; // 50 years safety limit
 
-    const labels = [];
-    const balanceData = [];
-
     // UI Toggle
-    const minPayGroup = document.getElementById('minPayGroup');
-    const fixedPayGroup = document.getElementById('fixedPayGroup');
-    if (type === 'minimum') {
-        if (minPayGroup) minPayGroup.style.display = 'block';
-        if (fixedPayGroup) fixedPayGroup.style.display = 'none';
+    if (paymentType === 'minimum') {
+        document.getElementById('minPayGroup').style.display = 'block';
+        document.getElementById('fixedPayGroup').style.display = 'none';
     } else {
-        if (minPayGroup) minPayGroup.style.display = 'none';
-        if (fixedPayGroup) fixedPayGroup.style.display = 'block';
+        document.getElementById('minPayGroup').style.display = 'none';
+        document.getElementById('fixedPayGroup').style.display = 'block';
     }
-
-    labels.push('Month 0');
-    balanceData.push(initialBalance.toFixed(2));
 
     while (balance > 0.01 && months < maxMonths) {
         const interest = balance * monthlyRate;
         let payment = 0;
 
-        if (type === 'minimum') {
-            payment = Math.max(balance * minPayPercent, 25); // Assume $25/£25 absolute minimum
+        if (paymentType === 'minimum') {
+            payment = Math.max(balance * minPayPercent, 25); // Assume $25 absolute minimum
         } else {
             payment = fixedPayment;
         }
 
         // If interest is more than payment, debt grows forever
-        if (interest >= payment && type === 'fixed') {
+        if (interest >= payment && paymentType === 'fixed') {
             updateElementText('payoffTime', 'Never (Increase Payment)');
             updateElementText('totalInterest', 'N/A');
             updateElementText('totalPaid', 'N/A');
-            updateChart([], []);
             return;
         }
 
@@ -67,12 +50,6 @@ function calculateCreditCard() {
         totalInterest += interest;
         balance -= principalPaid;
         months++;
-
-        // Add to chart every 6 months or at the end
-        if (months % 6 === 0 || balance <= 0.01) {
-            labels.push(`Month ${months}`);
-            balanceData.push(balance.toFixed(2));
-        }
     }
 
     // Update Results
@@ -85,63 +62,14 @@ function calculateCreditCard() {
     if (months >= maxMonths) timeString = '50+ Years';
 
     updateElementText('payoffTime', timeString);
-    updateElementText('totalInterest', formatCurrency(totalInterest, currentRegion));
-    updateElementText('totalPaid', formatCurrency(initialBalance + totalInterest, currentRegion));
-
-    updateChart(labels, balanceData);
+    updateElementText('totalInterest', formatCurrency(totalInterest, region));
+    updateElementText('totalPaid', formatCurrency((parseFloat(balanceInput.value) || 0) + totalInterest, region));
 }
-
-function updateChart(labels, data) {
-    const ctx = document.getElementById('creditCardChart');
-    if (!ctx) return;
-
-    if (creditCardChart) {
-        creditCardChart.data.labels = labels;
-        creditCardChart.data.datasets[0].data = data;
-        creditCardChart.update();
-    } else {
-        creditCardChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: 'Remaining Balance',
-                    data: data,
-                    borderColor: '#1e3a8a',
-                    backgroundColor: 'rgba(30, 58, 138, 0.1)',
-                    fill: true,
-                    tension: 0.1
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: { position: 'top' },
-                    title: { display: true, text: 'Debt Payoff Progress' }
-                }
-            }
-        });
-    }
-}
-
-// Region change handler
-window.onRegionChange = (region) => {
-    calculateCreditCard();
-};
 
 document.addEventListener('DOMContentLoaded', () => {
     const inputs = document.querySelectorAll('input, select');
     inputs.forEach(input => {
         input.addEventListener('input', calculateCreditCard);
     });
-
-    const regionSelect = document.getElementById('currency');
-    if (regionSelect) {
-        regionSelect.value = currentRegion;
-        regionSelect.addEventListener('change', (e) => {
-            setRegion(e.target.value);
-        });
-    }
-
     calculateCreditCard();
 });
